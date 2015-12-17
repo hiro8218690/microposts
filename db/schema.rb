@@ -20,10 +20,7 @@ ActiveRecord::Schema.define(version: 20151215143412) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
-=======
->>>>>>> user-profile
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
 
   create_table "relationships", force: :cascade do |t|
