@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+  <div class="panel panel-body">プロフィール</div>
+    
+    <div class="panel-body">
+      <%= form_for(@user, html: {class: "form-horizontal"}) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %> <!-- ここを追加 -->
+    
+    
+    　<div class="form-group">
+    　   <label for="user_name" class="col-md-1 control-label">名前</label>
+        <div class="col-md-10">
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+
+    　<div class="form-group">
+    　   <label for="user_email" class="col-md-1 control-label">mail</label>
+        <div class="col-md-10">
+          <%= f.text_field :email, class: "form-control" %>
+        </div>
+      </div>      
+
+      <div class="form-group">
+        <label for="user_description" class="col-md-1 control-label">プロフィール</label>
+        <div class="col-md-10">
+          <%= f.text_area :description, size: "50x10", class: "form-control" %>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="user_location" class="col-md-1 control-label">エリア</label>
+        <div class="col-md-10">
+          <%= f.text_field :location, size: "50x10", class: "form-control" %>
+        </div>
+      </div>     
+      
+      <div class="form-group">
+        <label for="user_password" class="col-md-1 control-label">password</label>
+        <div class="col-md-10">
+          <%= f.password_field :password, size: "50x10", class: "form-control" %>
+        </div>
+      </div>          
+
+      <div class="form-group">
+        <div class="col-sm-offset-1 col-sm-10">
+          <%= f.submit "登録する", class: "btn btn-default btn-success btn-block" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>    
+</div>
