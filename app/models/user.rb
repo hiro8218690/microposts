@@ -1,12 +1,15 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name , length: { maximum: 20 } , presence: true
+  validates :description , length: { minimum: 2, maximum: 30 } , presence: true, on: :update
+  validates :location , length: { maximum: 20 } , presence: true, on: :update
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
+<<<<<<< HEAD
   has_many :microposts
   
   has_many :following_relationships, class_name:  "Relationship",
@@ -29,5 +32,7 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following_users.inclede?(other_user)
   end
+=======
+>>>>>>> user-profile
   
 end
