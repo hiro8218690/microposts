@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   
-<<<<<<< HEAD
+
   has_many :microposts
   
   has_many :following_relationships, class_name:  "Relationship",
@@ -32,7 +32,5 @@ class User < ActiveRecord::Base
   def following?(other_user)
     following_users.inclede?(other_user)
   end
-=======
->>>>>>> user-profile
   
 end
