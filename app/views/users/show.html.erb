@@ -1,50 +1,19 @@
-
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="media">
-      <a class="media-left">
-      <%= gravatar_for @user %>
-      </a>
-      <div class="media-body">
-        <h4 class="media-heading"><%= @user.name %></h4>
-        <%= @user.description %><br>
-        <%= @user.location %>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-<%= gravatar_for @user %>
-<%= @user.name %>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
       </h1>
     </section>
   </aside>
-  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
-    <%= if @user.microposts.any? %>
+    <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>
     <% end %>
-  </div>
-  
-  <div class="col-md-8">
-    <% if @user.microposts.any? %>
-
-      <h3>Microposts (
-    <%= @user.microposts.count %>
-      )</h3>
-
-      <ol class="microposts">
-      <%= render @microposts %>
-      </ol>
-    
-    <% end %>
-
   </div>
 </div>
