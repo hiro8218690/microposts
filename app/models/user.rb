@@ -14,4 +14,20 @@ class User < ActiveRecord::Base
                                      dependent:   :destroy
   has_many :following_users, through: :following_relationships, source: :followed
   
+  #他のユーザーをフォローする
+  def follow(other_user)
+    following_relationships.find_or_create_by(followed_id: other_user.id)
+  end
+  
+  #フォローしているユーザーをあんフォローする
+  def unfollow(other_user)
+    following_relationships = following_relationships.find_by(followed_id: other_user.id)
+    following_relationships.destroy if following_relationships
+  end
+  
+  #あるユーザーをフォローしているかどうか？
+  def following?(other_user)
+    following_users.inclede?(other_user)
+  end
+  
 end
