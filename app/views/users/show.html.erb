@@ -1,3 +1,16 @@
+
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs">
+    	<li><a href="<%= following_user_path(@user) %>">フォロー</a></li>
+    	<li><a href="<%= followers_user_path(@user) %>">フォロワー</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -6,7 +19,13 @@
         <%= @user.name %>
       </h1>
     </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
   </aside>
+  
+
+  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>

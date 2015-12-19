@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  
+
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
+                                        :following, :followers]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :authenticate_user!, only: [:edit, :update]
   
@@ -12,8 +14,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  
-  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -36,7 +36,20 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end  
-  
+
+
+  #http://railstutorial.jp/chapters/following_users?version=4.2#code-following_followers_actions 参照
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    render 'show_follow'
+  end
 
   private
   
@@ -48,7 +61,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :description, :location, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, :followers, :following)
   end
   
   def set_user
